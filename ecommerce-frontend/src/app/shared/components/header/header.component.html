@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a mat-button routerLink="/">
+      <mat-icon>shopping_basket</mat-icon>
+      <span>E-Commerce</span>
+    </a>
+
+    <span class="spacer"></span>
+
+    <ng-container *ngIf="isLoggedIn$ | async; else authButtons">
+      <button mat-button routerLink="/products">
+        <mat-icon>store</mat-icon>
+        Products
+      </button>
+
+      <button mat-button routerLink="/cart" class="cart-button">
+        <mat-icon>shopping_cart</mat-icon>
+        Cart
+        <span class="cart-count" *ngIf="cartItemCount$ | async as count">
+          {{ count }}
+        </span>
+      </button>
+
+      <button mat-button routerLink="/wishlist">
+        <mat-icon>favorite</mat-icon>
+        Wishlist
+      </button>
+
+      <button mat-button routerLink="/orders">
+        <mat-icon>receipt</mat-icon>
+        Orders
+      </button>
+
+      <button mat-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>account_circle</mat-icon>
+        Account
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          Logout
+        </button>
+      </mat-menu>
+    </ng-container>
+
+    <ng-template #authButtons>
+      <button mat-button routerLink="/auth/login">Login</button>
+      <button mat-raised-button color="accent" routerLink="/auth/register">
+        Register
+      </button>
+    </ng-template>
+  </mat-toolbar-row>
+</mat-toolbar>

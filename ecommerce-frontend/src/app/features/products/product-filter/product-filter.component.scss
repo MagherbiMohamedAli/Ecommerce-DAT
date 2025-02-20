@@ -1,0 +1,33 @@
+.filter-card {
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+  
+  .filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .search-field {
+    grid-column: 1 / -1;
+  }
+  
+  .in-stock-checkbox {
+    margin: 0.5rem 0;
+  }
+  
+  .reset-button {
+    justify-self: end;
+  }
+  
+  @media (max-width: 600px) {
+    .filter-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .reset-button {
+      justify-self: stretch;
+    }
+  }

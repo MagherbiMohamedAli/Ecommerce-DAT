@@ -1,0 +1,40 @@
+<div class="container" *ngIf="product$ | async as product">
+    <mat-card class="product-details-card">
+      <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <div class="product-info">
+          <div class="price-section">
+            <h2 class="price">${{ product.price }}</h2>
+            <p class="stock" [class.low-stock]="product.stock < 10">
+              {{ product.stock }} in stock
+            </p>
+          </div>
+  
+          <div class="description-section">
+            <h3>Description</h3>
+            <p>{{ product.description }}</p>
+          </div>
+        </div>
+      </mat-card-content>
+  
+      <mat-card-actions>
+        <button mat-raised-button color="primary" 
+                (click)="addToCart(product.id)"
+                [disabled]="product.stock === 0">
+          <mat-icon>shopping_cart</mat-icon>
+          Add to Cart
+        </button>
+        
+        <button mat-raised-button 
+                [color]="isInWishlist ? 'warn' : ''"
+                (click)="toggleWishlist(product.id)">
+          <mat-icon>{{ isInWishlist ? 'favorite' : 'favorite_border' }}</mat-icon>
+          {{ isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

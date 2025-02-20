@@ -96,7 +96,7 @@ This project is a full-stack e-commerce application that implements:
 ### Installation
 
 1. Clone the repository
-git clone [repository-url]
+git clone https://github.com/MagherbiMohamedAli/Ecommerce-DAT.git
 cd backend
 npm install
 
